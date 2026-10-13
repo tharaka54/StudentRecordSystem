@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"math"
 	"os"
 	"strings"
 	"sync"
@@ -169,19 +168,6 @@ func requireDatabaseConstraint(err error) string {
 	default:
 		return "Database operation failed. Please check the form and try again."
 	}
-}
-func computeWAM(db *sql.DB, studentID int64) (float64, int, error) {
-	var weighted sql.NullFloat64
-	var credits sql.NullFloat64
-	var n int
-	err := db.QueryRow(`SELECT SUM(r.mark*u.credit_points), SUM(u.credit_points), COUNT(*) FROM results r JOIN enrolments e ON e.enrolment_id=r.enrolment_id JOIN units u ON u.unit_id=e.unit_id WHERE e.student_id=? AND e.status='Completed'`, studentID).Scan(&weighted, &credits, &n)
-	if err != nil {
-		return 0, 0, err
-	}
-	if !credits.Valid || credits.Float64 <= 0 {
-		return 0, 0, nil
-	}
-	return math.Round(weighted.Float64/credits.Float64*100) / 100, n, nil
 }
 func parseDate(s string) bool {
 	if s == "" {

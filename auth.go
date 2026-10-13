@@ -92,14 +92,15 @@ type loginAttempt struct {
 	WindowStart time.Time
 }
 type App struct {
-	store    *Store
-	mu       sync.Mutex
-	sessions map[string]session
-	attempts map[string]loginAttempt
+	store     *Store
+	academics academicReader
+	mu        sync.Mutex
+	sessions  map[string]session
+	attempts  map[string]loginAttempt
 }
 
 func newApp(s *Store) *App {
-	return &App{store: s, sessions: map[string]session{}, attempts: map[string]loginAttempt{}}
+	return &App{store: s, academics: s, sessions: map[string]session{}, attempts: map[string]loginAttempt{}}
 }
 func secureToken() (string, error) {
 	b := make([]byte, 32)
@@ -243,6 +244,9 @@ func sameOrigin(r *http.Request) bool {
 	}
 	return origin == "http://"+r.Host || origin == "https://"+r.Host
 }
+
+// protect is a higher-order function: its closure authenticates a request,
+// checks role and CSRF, then invokes the supplied handler.
 func (a *App) protect(next http.HandlerFunc, adminOnly bool) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != "GET" && r.Method != "HEAD" {

@@ -22,6 +22,8 @@ func writeJSON(w http.ResponseWriter, status int, data any) {
 func apiError(w http.ResponseWriter, status int, msg string) {
 	writeJSON(w, status, map[string]string{"error": msg})
 }
+
+// readJSON checks the request boundary before typed or per-field validation.
 func readJSON(r *http.Request, out any) error {
 	if !strings.HasPrefix(r.Header.Get("Content-Type"), "application/json") {
 		return errors.New("send JSON with Content-Type: application/json")
@@ -61,6 +63,8 @@ func defs() map[string]resourceDef {
 		"results":    {"results", "result_id", `SELECT results.*,enrolments.student_id,enrolments.unit_id,enrolments.semester,enrolments.academic_year,students.course_id,students.student_number,students.first_name || ' ' || students.last_name AS student_name,units.unit_code,units.unit_name,units.credit_points FROM results JOIN enrolments ON results.enrolment_id=enrolments.enrolment_id JOIN students ON students.student_id=enrolments.student_id JOIN units ON units.unit_id=enrolments.unit_id`, "results", []fieldDef{intf("enrolment_id", true), {"mark", "float", true, 0}}},
 	}
 }
+
+// routes composes HandlerFunc adapters with authentication and role middleware.
 func (a *App) routes() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/login", a.login)
@@ -182,7 +186,7 @@ func (a *App) handleResource(w http.ResponseWriter, r *http.Request) {
 		id = n
 	}
 	if len(pieces) == 3 && name == "students" && pieces[2] == "summary" && r.Method == "GET" {
-		a.studentSummary(w, id)
+		a.studentSummary(w, r, id)
 		return
 	}
 	if len(pieces) == 3 {
@@ -226,6 +230,9 @@ func validOption(v string, opts ...string) bool {
 	}
 	return false
 }
+
+// validateResource converts generic JSON fields to checked Go values and enforces
+// academic relationships. SQL identifiers come only from the resource definitions.
 func (a *App) validateResource(name string, def resourceDef, raw map[string]json.RawMessage, updating bool) (map[string]any, error) {
 	out := map[string]any{}
 	allow := map[string]bool{}
@@ -382,6 +389,9 @@ func (a *App) validateResource(name string, def resourceDef, raw map[string]json
 	}
 	return out, nil
 }
+
+// saveResource is called under protect's write mutex. Result saves update both
+// result and enrolment atomically; no partial completion is committed.
 func (a *App) saveResource(w http.ResponseWriter, r *http.Request, name string, def resourceDef, id int64) {
 	var raw map[string]json.RawMessage
 	if err := readJSON(r, &raw); err != nil {
@@ -626,9 +636,9 @@ func (a *App) removeResource(w http.ResponseWriter, name string, def resourceDef
 }
 
 // studentSummary is reached only through the Admin-protected resource router.
-func (a *App) studentSummary(w http.ResponseWriter, id int64) {
-	data, err := a.academicSummary(id)
-	if err == sql.ErrNoRows {
+func (a *App) studentSummary(w http.ResponseWriter, r *http.Request, id int64) {
+	data, err := a.academics.AcademicSummary(r.Context(), id)
+	if errors.Is(err, sql.ErrNoRows) {
 		apiError(w, 404, "Student not found.")
 		return
 	}

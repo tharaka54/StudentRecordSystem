@@ -1,0 +1,7 @@
+goos: windows
+goarch: amd64
+pkg: github.com/tharaka54/StudentRecordSystem
+cpu: 11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz
+BenchmarkAcademicSummary-12    	      42	  12393610 ns/op	    7237 B/op	     187 allocs/op
+PASS
+ok  	github.com/tharaka54/StudentRecordSystem	16.485s

@@ -1,0 +1,1 @@
+PASS: extracted Windows package starts, serves its embedded interface, authenticates the sample student, returns the typed academic summary with WAM 78, and runs the controlled language demonstration.

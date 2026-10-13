@@ -11,7 +11,7 @@ try {
     $relative = $file.FullName.Substring($projectRoot.Length + 1).Replace('\','/')
     if ($relative -match '^data/' -and $relative -ne 'data/.gitkeep') { continue }
     if ($relative -match '(^|/)(\.git|node_modules|dist)/|\.(db|db-wal|db-shm|log|out|test)$|(^|/)\.env$') { continue }
-    if ($file.Extension -eq '.exe' -and $relative -ne 'student-records.exe') { continue }
+    if ($file.Extension -eq '.exe' -and $relative -notin @('student-records.exe','language-demo.exe')) { continue }
     [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $file.FullName, ('StudentRecordSystem/' + $relative), [IO.Compression.CompressionLevel]::Optimal) | Out-Null
   }
 } finally { $archive.Dispose() }

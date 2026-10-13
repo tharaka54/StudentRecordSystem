@@ -1,0 +1,43 @@
+=== RUN   TestApplicationWorkflowAndStudentIsolation
+=== RUN   TestApplicationWorkflowAndStudentIsolation/authentication_and_ownership
+=== RUN   TestApplicationWorkflowAndStudentIsolation/database_account_constraints
+=== RUN   TestApplicationWorkflowAndStudentIsolation/server_search_and_pagination
+=== RUN   TestApplicationWorkflowAndStudentIsolation/academic_workflow_and_weighted_marks
+=== RUN   TestApplicationWorkflowAndStudentIsolation/password_change_reset_disable_and_logout
+=== RUN   TestApplicationWorkflowAndStudentIsolation/reopen_persistence
+--- PASS: TestApplicationWorkflowAndStudentIsolation (26.85s)
+    --- PASS: TestApplicationWorkflowAndStudentIsolation/authentication_and_ownership (0.00s)
+    --- PASS: TestApplicationWorkflowAndStudentIsolation/database_account_constraints (0.00s)
+    --- PASS: TestApplicationWorkflowAndStudentIsolation/server_search_and_pagination (0.00s)
+    --- PASS: TestApplicationWorkflowAndStudentIsolation/academic_workflow_and_weighted_marks (16.46s)
+    --- PASS: TestApplicationWorkflowAndStudentIsolation/password_change_reset_disable_and_logout (4.99s)
+    --- PASS: TestApplicationWorkflowAndStudentIsolation/reopen_persistence (0.59s)
+=== RUN   TestPBKDF2KnownVector
+--- PASS: TestPBKDF2KnownVector (0.00s)
+=== RUN   TestPasswordHashing
+--- PASS: TestPasswordHashing (1.31s)
+=== RUN   TestMarkGrades
+--- PASS: TestMarkGrades (0.00s)
+=== RUN   TestAcademicSummaryTotals
+=== RUN   TestAcademicSummaryTotals/empty
+=== RUN   TestAcademicSummaryTotals/zero_counts_and_weights_differ
+=== RUN   TestAcademicSummaryTotals/pass_boundary_and_rounding
+--- PASS: TestAcademicSummaryTotals (0.00s)
+    --- PASS: TestAcademicSummaryTotals/empty (0.00s)
+    --- PASS: TestAcademicSummaryTotals/zero_counts_and_weights_differ (0.00s)
+    --- PASS: TestAcademicSummaryTotals/pass_boundary_and_rounding (0.00s)
+=== RUN   TestAcademicSummaryContractAndCancellation
+2026/10/13 13:10:48 summary: simulated storage failure
+--- PASS: TestAcademicSummaryContractAndCancellation (10.73s)
+=== RUN   TestConcurrentStudentSummaries
+--- PASS: TestConcurrentStudentSummaries (16.22s)
+=== RUN   TestAcademicSummarySnapshotDuringWrites
+--- PASS: TestAcademicSummarySnapshotDuringWrites (7.79s)
+PASS
+coverage: 64.6% of statements
+ok  	github.com/tharaka54/StudentRecordSystem	62.966s	coverage: 64.6% of statements
+=== RUN   TestLanguageDemonstrations
+--- PASS: TestLanguageDemonstrations (0.00s)
+PASS
+coverage: 62.5% of statements
+ok  	github.com/tharaka54/StudentRecordSystem/cmd/language-demo	0.021s	coverage: 62.5% of statements

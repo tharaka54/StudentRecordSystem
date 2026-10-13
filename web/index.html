@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#152235">
+  <title>Student Records</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/resources.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to main content</a>
+  <main id="login-screen" class="login-layout" hidden>
+    <section class="login-identity" aria-label="Student Records">
+      <div class="brand"><span class="brand-mark">SR</span><span>Student Records<small>Academic Registry</small></span></div>
+      <div class="login-title"><p class="eyebrow">UNIVERSITY SERVICES</p><h1>Student Record<br>Management System</h1><p>Academic administration and student access.</p></div>
+      <p class="login-footer">Academic Registry</p>
+    </section>
+    <section class="login-form-area">
+      <div class="login-card">
+        <p class="eyebrow">ACCOUNT ACCESS</p><h2>Sign in</h2><p class="muted">Enter your username and password.</p>
+        <form id="login-form">
+          <div class="field"><label for="username">Username</label><input id="username" name="username" autocomplete="username" maxlength="50" required></div>
+          <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" maxlength="200" required></div>
+          <p id="login-message" class="form-message" role="alert" hidden></p>
+          <button class="btn primary full" type="submit">Sign in</button>
+        </form>
+        <p class="account-help">For account assistance, contact the Academic Registry.</p>
+      </div>
+    </section>
+  </main>
+  <div id="app-shell" class="shell" hidden>
+    <button id="nav-backdrop" class="nav-backdrop" aria-label="Close navigation" hidden></button>
+    <aside id="sidebar" class="sidebar">
+      <div class="brand"><span class="brand-mark">SR</span><span>Student Records<small id="portal-name">Academic Registry</small></span></div>
+      <p class="nav-label">WORKSPACE</p><nav id="navigation" aria-label="Main navigation"></nav>
+      <div class="sidebar-bottom"><div class="sidebar-user"><span id="avatar" class="avatar"></span><div><strong id="sidebar-name"></strong><span id="sidebar-role"></span></div></div><button id="logout" class="nav-link logout">Sign out</button></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><div class="topbar-left"><button id="menu-toggle" class="icon-button menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar"></button><span class="breadcrumb">Student Records <span aria-hidden="true">/</span> <strong id="breadcrumb">Dashboard</strong></span></div><div class="topbar-right"><span id="today"></span><span class="role-label" id="role-label"></span></div></header>
+      <main id="content" class="content" tabindex="-1"></main>
+      <footer class="footer">Student Record Management System <span>Academic Registry</span></footer>
+    </div>
+  </div>
+  <dialog id="editor" class="dialog" aria-labelledby="editor-title"><div class="dialog-head"><div><p class="eyebrow">RECORD DETAILS</p><h2 id="editor-title"></h2></div><button id="editor-close" class="icon-button" aria-label="Close form"></button></div><div id="editor-body"></div></dialog>
+  <dialog id="confirm-dialog" class="dialog confirm-dialog" aria-labelledby="confirm-title"><div class="dialog-head"><h2 id="confirm-title">Delete record?</h2></div><p id="confirm-message"></p><p id="delete-error" class="form-message" role="alert" hidden></p><div class="form-actions"><button id="delete-cancel" class="btn" type="button">Cancel</button><button id="delete-confirm" class="btn danger" type="button">Delete record</button></div></dialog>
+  <div id="notification" class="notification" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

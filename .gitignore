@@ -1,0 +1,13 @@
+/data/*
+!/data/.gitkeep
+*.db
+*.db-shm
+*.db-wal
+*.exe
+*.test
+*.out
+*.log
+.env
+.DS_Store
+/dist/
+

@@ -25,7 +25,7 @@ func (a *App) handleStudentOverview(w http.ResponseWriter, r *http.Request) {
 		apiError(w, 400, "This endpoint does not accept record identifiers or filters.")
 		return
 	}
-	data, err := a.academicSummary(acc.StudentID)
+	data, err := a.academics.AcademicSummary(r.Context(), acc.StudentID)
 	if err != nil {
 		apiError(w, 500, "Unable to load your academic record.")
 		return
@@ -77,31 +77,6 @@ func (a *App) handlePassword(w http.ResponseWriter, r *http.Request) {
 	a.revokeUserSessions(acc.ID)
 	a.clearSession(w, r)
 	writeJSON(w, 200, map[string]string{"status": "Password updated. Please sign in again."})
-}
-
-func (a *App) academicSummary(studentID int64) (map[string]any, error) {
-	info, err := getOne(a.store.DB, `SELECT s.*,c.course_code,c.course_name,c.duration_years,c.description AS course_description FROM students s JOIN courses c ON c.course_id=s.course_id WHERE s.student_id=?`, studentID)
-	if err != nil {
-		return nil, err
-	}
-	rows, err := getMany(a.store.DB, `SELECT e.enrolment_id,e.unit_id,e.semester,e.academic_year,e.enrolment_date,e.status,u.unit_code,u.unit_name,u.credit_points,r.result_id,r.mark,r.grade FROM enrolments e JOIN units u ON u.unit_id=e.unit_id LEFT JOIN results r ON r.enrolment_id=e.enrolment_id WHERE e.student_id=? ORDER BY e.academic_year DESC,e.semester DESC,u.unit_code`, studentID)
-	if err != nil {
-		return nil, err
-	}
-	wam, n, err := computeWAM(a.store.DB, studentID)
-	if err != nil {
-		return nil, err
-	}
-	var wamValue any
-	if n > 0 {
-		wamValue = wam
-	}
-	var earned, enrolled int
-	err = a.store.DB.QueryRow(`SELECT COALESCE(SUM(CASE WHEN e.status='Completed' AND r.mark>=50 THEN u.credit_points ELSE 0 END),0),COALESCE(SUM(CASE WHEN e.status='Enrolled' THEN 1 ELSE 0 END),0) FROM enrolments e JOIN units u ON u.unit_id=e.unit_id LEFT JOIN results r ON r.enrolment_id=e.enrolment_id WHERE e.student_id=?`, studentID).Scan(&earned, &enrolled)
-	if err != nil {
-		return nil, err
-	}
-	return map[string]any{"student": info, "units": rows, "wam": wamValue, "graded_units": n, "earned_credits": earned, "enrolled_units": enrolled}, nil
 }
 
 // Search identifiers are allowlisted; all search values are bound parameters.

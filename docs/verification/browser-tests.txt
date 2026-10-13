@@ -1,0 +1,2 @@
+PASS: Admin CRUD, student account creation, student portal, password change, search, deletion, mobile navigation and no browser runtime errors.
+Screenshots: C:\Users\DLK\Downloads\THARAKA FINAL PROJECT\Repo\StudentRecordSystem\docs\screenshots

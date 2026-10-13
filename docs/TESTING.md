@@ -56,6 +56,17 @@ Screenshots are saved under `docs/screenshots`. Stop the test server and the iso
 
 On 12 October 2026, the automated Go suite and the browser workflow suite were run successfully on Windows. The screenshots show the running application with fictional sample data. Desktop screenshots use 1440×1000; the mobile screenshot uses a 390×844 viewport. The application was checked in Chrome headless; this does not establish compatibility with every browser or device.
 
+The final Assignment 2 version was verified again on 13 October 2026 using Go 1.27.2 on Windows amd64. `go test ./... -v -count=1 -cover` passed with 64.6% root-package statement coverage and 62.5% language-demonstration coverage. `go vet ./...` produced no diagnostics. The browser workflow passed, including server rejection of mark 101 with browser validation bypassed and confirmation that the previously saved 84.5 remained unchanged. Screenshots 08 and 09 record the saved result and rejection.
+
+New tests cover typed JSON null/empty-array contracts, cancelled request contexts, structural-interface substitutes, wrapped missing-student errors, 24 concurrent real HTTP requests for two student accounts, and summary consistency while results are updated. The tests use temporary databases. These concurrency checks do not establish race freedom; the race detector was not run because a suitable Windows C toolchain was not available.
+
+Recorded logs are in `docs/verification`. A short `BenchmarkAcademicSummary` run over four seeded enrolments and two marks measured 12,393,610 ns/op (12.39 ms), 7,237 B/op and 187 allocs/op. It used an Intel i5-11400H and a 300 ms requested benchmark window, completing 42 iterations. It excludes setup, authentication, network and browser work and is not a load test or cross-language comparison.
+
+```powershell
+go run ./cmd/language-demo
+go test -run "^$" -bench "^BenchmarkAcademicSummary$" -benchtime=300ms -benchmem
+```
+
 ## Manual acceptance script
 
 | Action | Expected result |

@@ -115,6 +115,20 @@ try {
   const enrolment = (await read('enrolments?q=QA9001')).items[0]; assert.ok(enrolment);
   await page('results', 'Results'); await form('result', { enrolment_id: enrolment.enrolment_id, mark: '84.5' });
   assert.equal((await read('students/' + student.student_id + '/summary')).wam, 84.5);
+  await page('students/' + student.student_id, 'Student academic summary');
+  await screenshot('08-created-result-summary');
+  await page('results', 'Results');
+  await fill('#content input[type=search]', 'QA9001');
+  await wait('document.querySelectorAll("#content tbody tr").length===1');
+  await evaluate('Array.from(document.querySelectorAll("#content tbody button")).find(b=>b.textContent==="Edit").click()');
+  await wait('document.querySelector("#editor").open');
+  await fill('#record-mark', 101);
+  // Bypass browser constraint validation deliberately to verify the Go boundary.
+  await evaluate('document.querySelector("#editor form").dispatchEvent(new Event("submit",{bubbles:true,cancelable:true}))');
+  await wait('document.querySelector("#editor .form-message")?.textContent.includes("between 0 and 100")');
+  assert.equal((await read('students/' + student.student_id + '/summary')).wam, 84.5);
+  await screenshot('09-server-validation');
+  await click('#editor-close');
   await page('users', 'Student accounts'); await form('account', { student_id: student.student_id, password: 'StudentTest!123' });
   await logout(); await login('sQA9001', 'StudentTest!123', 'My dashboard');
   assert.equal(await evaluate('document.querySelectorAll("#navigation a").length'), 6);

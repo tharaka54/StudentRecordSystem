@@ -27,7 +27,7 @@ Only one application can listen on port 8081 at a time. Stop the running server 
 
 ## Develop in Visual Studio Code
 
-Install Go 1.23 or later and the Go extension for VS Code. This version was built and tested using Go 1.27.0 on Windows x64. Open the folder containing `go.mod`, then run:
+Install Go 1.23 or later and the Go extension for VS Code. The Assignment 2 version was built and tested using Go 1.27.2 on Windows x64 on 13 October 2026. Open the folder containing `go.mod`, then run:
 
 ```powershell
 go mod download
@@ -79,11 +79,14 @@ Students sign in with their individual usernames. They can view their own dashbo
 | `db.go`, `schema.sql` | SQLite access, relationships, grades, WAM |
 | `web/` | Shared interface and role-specific pages |
 | `api_test.go`, `auth_test.go` | Automated backend tests |
+| `summary.go`, `summary_test.go` | Typed academic summaries, a structural interface, consistent read snapshots and verification |
+| `cmd/language-demo/`, `LANGUAGE_DEMO_WINDOWS.bat` | Controlled goroutine/channel, error and nullable-pointer demonstrations |
 | `tools/browser-smoke.mjs` | Optional browser workflow checks using installed Chrome and Node.js |
 | `docs/ARCHITECTURE.md` | Architecture, API access matrix and ER model |
 | `docs/TESTING.md` | Test commands, results and manual checks |
 | `docs/ER_Diagram.svg`, `docs/System_Architecture.svg` | Exportable diagrams |
 | `docs/screenshots/` | Screenshots of the running application using fictional records |
+| `docs/verification/` | Recorded test, static-check, benchmark and demonstration results |
 
 ## Git and GitHub
 
@@ -99,6 +102,10 @@ git branch -M main
 Create an empty repository in your own GitHub account. Then add the exact repository URL GitHub gives you as `origin` and push `main`. If integrating into an existing clone, preserve its `.git` directory and history instead of initializing a second repository.
 
 ## Storage and deployment scope
+
+The Assignment 2 summary uses typed `StudentProfile`, `AcademicUnit` and `AcademicSummary` structs. `Store` implicitly satisfies the `academicReader` contract used by summary handlers. Profile and units are read in one transaction, and the WAM and counts are calculated from the returned units. Missing marks and WAM serialize as JSON null; a recorded zero remains a present mark. The Admin CRUD response format is unchanged.
+
+Double-click `LANGUAGE_DEMO_WINDOWS.bat` to run the included controlled language examples without a Go installation. The intentionally recovered nil-pointer panic is confined to this separate executable; it is not web application logic.
 
 The original project and its database remain separate. Do not point this version at the old Admin/General database: its account schema has no secure student ownership mapping. Keep backups of your database; stop the server before copying the database file so SQLite's WAL is fully checkpointed.
 

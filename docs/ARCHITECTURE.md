@@ -92,6 +92,8 @@ sequenceDiagram
 
 ## Boundaries and report notes
 
+The final Assignment 2 implementation adds `academicReader` and typed `StudentProfile`, `AcademicUnit` and `AcademicSummary` values in `summary.go`. `Store.AcademicSummary` accepts the HTTP request context, uses a single read transaction, and computes counts and WAM from the returned unit slice. Pointer-valued marks, result IDs and grades preserve database nulls. Both Admin and Student summary handlers use this contract. The final Go struct diagram is `Go_Struct_Diagram.svg`; report diagrams with larger labels are `Report_Architecture.svg` and `Report_ER_Diagram.svg`.
+
 - All Go files remain in `package main`, preserving the small project's understandable structure. File separation organizes responsibilities; it is not package-level access isolation.
 - Go structs and methods represent Store, App, accounts and sessions. `http.Handler` demonstrates interface use, and errors are explicitly returned and checked.
 - Browser form and navigation events are JavaScript events. They cause HTTP requests handled by Go; they are not a Go GUI event framework.

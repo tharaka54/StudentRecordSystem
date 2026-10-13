@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Report_Architecture" id="Report_Architecture">
+    <mxGraphModel dx="1200" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1060" pageHeight="1040" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Student records system architecture" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=27.0;fontStyle=1;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30.0" y="15.0" width="529.2" height="35.1" />
+        </mxCell>
+        <mxCell id="3" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="90" width="480" height="123" />
+        </mxCell>
+        <mxCell id="4" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="90" width="480" height="45" />
+        </mxCell>
+        <mxCell id="5" value="Admin browser" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=22.0;fontStyle=1;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="189.92" y="98.0" width="160.16000000000003" height="28.6" />
+        </mxCell>
+        <mxCell id="6" value="HTML, CSS and JavaScript" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="46.0" y="142.0" width="268.8" height="26.0" />
+        </mxCell>
+        <mxCell id="7" value="Manage academic records and accounts" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="46.0" y="171.0" width="403.20000000000005" height="26.0" />
+        </mxCell>
+        <mxCell id="8" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="550" y="90" width="480" height="123" />
+        </mxCell>
+        <mxCell id="9" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="550" y="90" width="480" height="45" />
+        </mxCell>
+        <mxCell id="10" value="Student browser" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=22.0;fontStyle=1;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="697.6" y="98.0" width="184.8" height="28.6" />
+        </mxCell>
+        <mxCell id="11" value="HTML, CSS and JavaScript" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="566.0" y="142.0" width="268.8" height="26.0" />
+        </mxCell>
+        <mxCell id="12" value="View own records and change password" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="566.0" y="171.0" width="403.20000000000005" height="26.0" />
+        </mxCell>
+        <mxCell id="13" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="340" width="900" height="152" />
+        </mxCell>
+        <mxCell id="14" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="340" width="900" height="45" />
+        </mxCell>
+        <mxCell id="15" value="Go HTTP server and access controls" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=22.0;fontStyle=1;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="320.55999999999995" y="348.0" width="418.88000000000005" height="28.6" />
+        </mxCell>
+        <mxCell id="16" value="Embedded interface; session authentication" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96.0" y="392.0" width="470.40000000000003" height="26.0" />
+        </mxCell>
+        <mxCell id="17" value="Role, CSRF and origin checks" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96.0" y="421.0" width="313.6" height="26.0" />
+        </mxCell>
+        <mxCell id="18" value="Student identity obtained from authenticated account" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96.0" y="450.0" width="582.4000000000001" height="26.0" />
+        </mxCell>
+        <mxCell id="19" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="590" width="900" height="152" />
+        </mxCell>
+        <mxCell id="20" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="590" width="900" height="45" />
+        </mxCell>
+        <mxCell id="21" value="Application operations" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=22.0;fontStyle=1;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="394.48" y="598.0" width="271.04" height="28.6" />
+        </mxCell>
+        <mxCell id="22" value="Validated CRUD; automatic grades; credit-weighted WAM" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96.0" y="642.0" width="593.6" height="26.0" />
+        </mxCell>
+        <mxCell id="23" value="Transactional result saves and typed summary snapshots" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96.0" y="671.0" width="604.8000000000001" height="26.0" />
+        </mxCell>
+        <mxCell id="24" value="Parameterised search; account management" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96.0" y="700.0" width="448.00000000000006" height="26.0" />
+        </mxCell>
+        <mxCell id="25" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="840" width="900" height="123" />
+        </mxCell>
+        <mxCell id="26" value="" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="840" width="900" height="45" />
+        </mxCell>
+        <mxCell id="27" value="SQLite persistence" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=22.0;fontStyle=1;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="419.12" y="848.0" width="221.76000000000002" height="28.6" />
+        </mxCell>
+        <mxCell id="28" value="database/sql + modernc.org/sqlite" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96.0" y="892.0" width="369.6" height="26.0" />
+        </mxCell>
+        <mxCell id="29" value="Six tables; foreign keys; WAL; one open connection" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96.0" y="921.0" width="560.0" height="26.0" />
+        </mxCell>
+        <mxCell id="30" style="edgeStyle=none;rounded=0;html=0;strokeColor=#000000;strokeWidth=1.5;endArrow=none;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="270.0" y="213.0" />
+            <mxPoint as="targetPoint" x="530.0" y="340.0" />
+            <Array as="points">
+              <mxPoint x="270.0" y="290.0" />
+              <mxPoint x="530.0" y="290.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" style="edgeStyle=none;rounded=0;html=0;strokeColor=#000000;strokeWidth=1.5;endArrow=none;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="790.0" y="213.0" />
+            <mxPoint as="targetPoint" x="530.0" y="290.0" />
+            <Array as="points">
+              <mxPoint x="790.0" y="290.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" style="edgeStyle=none;rounded=0;html=0;strokeColor=#000000;strokeWidth=1.5;endArrow=none;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="530.0" y="492.0" />
+            <mxPoint as="targetPoint" x="530.0" y="590.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="33" style="edgeStyle=none;rounded=0;html=0;strokeColor=#000000;strokeWidth=1.5;endArrow=none;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="530.0" y="742.0" />
+            <mxPoint as="targetPoint" x="530.0" y="840.0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" value="Same-origin HTTP and JSON" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="550.0" y="298.0" width="280.0" height="26.0" />
+        </mxCell>
+        <mxCell id="35" value="Academic records persist; sessions remain in server memory." style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=20.0;fontStyle=0;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80.0" y="993.0" width="660.8000000000001" height="26.0" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

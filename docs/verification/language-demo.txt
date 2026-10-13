@@ -1,0 +1,6 @@
+goroutine result: A = 80
+goroutine result: B = 50
+goroutine result: C = 0
+unsafe nil dereference panicked: true
+explicit error branch: mark is absent
+present zero mark: 0
